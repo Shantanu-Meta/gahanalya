@@ -2,6 +2,7 @@ import Product from "@lib/models/product";
 import { NextResponse } from "next/server";
 const { default: connectWithMongo } = require("@lib/db");
 import {writeFile} from 'fs/promises'
+import { join } from "path";
 
 export const GET = async (req) => {
     await connectWithMongo();
@@ -31,7 +32,10 @@ export const POST = async (req) => {    // fully done
     }
     const byteData = await file.arrayBuffer(); 
     const buffer = Buffer.from(byteData); 
-    const path = `./public/products/${file.name}`; 
+    // const path = `./public/products/${file.name}`; 
+    const publicPath = join(process.cwd(), 'public');
+    const path = join(publicPath, 'products', file.name);
+
     await writeFile(path,buffer); 
 
     const product = {
