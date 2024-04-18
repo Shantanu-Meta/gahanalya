@@ -48,7 +48,7 @@ const WishItem = (props) => {
           className="object-cover object-center w-full h-full block relative"
           unoptimized={true}
           priority
-          src={item?.image ? `/products/${item?.image}`: "/assets/product-not-available-logo.png"  }
+          src={item?.image ? `/${item?.image}`: "/assets/product-not-available-logo.png"  }
           width={100}
           height={100}
         />

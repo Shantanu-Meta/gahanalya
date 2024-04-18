@@ -11,7 +11,7 @@ const Card = (props) => {
           query:props.data  // searchparams : all data passed as props
         }}>
             <div className='block relative lg:h-[40vh] h-48 overflow-hidden rounded-md'>
-            <Image  alt={name} className="object-cover object-center w-full h-full block relative" src={`/products/${image}`} width={100} height={100} unoptimized={true} priority/>
+            <Image  alt={name} className="object-cover object-center w-full h-full block relative" src={`/${image}`} width={100} height={100} unoptimized={true} priority/>
             </div>
             <div className="p-4 flex flex-col items-between gap-2">
                 <h2 className="text-black title-font text-lg font-medium">{name}</h2>

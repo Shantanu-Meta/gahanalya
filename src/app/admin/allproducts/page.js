@@ -84,7 +84,7 @@ const Page = () => {
                                 <tr className="border-b border-gray-800" key={_id}>
                                     <td className="py-3 px-2 font-bold flex flex-col gap-1">
                                         <Image
-                                            src={`/products/${image}`}
+                                            src={`/${image}`}
                                             alt={`${name}`}
                                             width={200}
                                             height={200}
@@ -160,7 +160,7 @@ const Page = () => {
                                 <tr className="border-b border-gray-800" key={_id}>
                                     <td className="py-3 px-2 font-bold flex flex-col gap-1">
                                         <Image
-                                            src={`/products/${image}`}
+                                            src={`/${image}`}
                                             alt={`${name}`}
                                             width={200}
                                             height={200}

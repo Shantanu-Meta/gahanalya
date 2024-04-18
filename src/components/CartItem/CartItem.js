@@ -44,7 +44,7 @@ const CartItem = (props) => {
     <div className="w-full shadow-md bg-white rounded-md shadow-yellow-600">
       <div className="block relative lg:h-[40vh] h-48 overflow-hidden rounded-md">
         <Image
-          src={item?.image ? `/products/${item?.image}`: "/assets/product-not-available-logo.png"  }
+          src={item?.image ? `/${item?.image}`: "/assets/product-not-available-logo.png"  }
           alt={item?.name}
           className="object-cover object-center w-full h-full block relative"
           width={100}

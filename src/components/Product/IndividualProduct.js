@@ -87,7 +87,7 @@ const IndividualProduct = ({ searchParams }) => {
             alt="image"
             unoptimized={true} priority
             className="md:w-1/2 w-full lg:h-[70vh] h-64 object-cover object-center rounded drop-shadow-md border-2 bg-white/30"
-            src={`/products/${searchParams?.image}`}
+            src={`/${searchParams?.image}`}
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
