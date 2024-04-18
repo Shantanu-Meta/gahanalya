@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img{
+    display: block;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+html,body{
+    width: 100%;
+    min-width: 100%;
+    overflow-x: hidden;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.economica-regular {
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* width */
+@media screen and (min-width:545px) {
+    
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: whitesmoke;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(255,1,0);
+    background: linear-gradient(222deg, rgba(255,1,0,1) 0%, rgba(255,194,0,1) 55%, rgba(255,232,0,1) 100%);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(255,1,0);
+    background: linear-gradient(222deg, rgba(255,232,0,1) 0%, rgba(255,194,0,1) 55%, rgba(255,1,0,1) 100%);
+  }
+}
