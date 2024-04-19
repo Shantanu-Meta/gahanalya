@@ -1,11 +1,12 @@
 "use client"
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import adminContetx from "@contextAPI/adminContext/adminContetx";
 import Image from "next/image";
 import Loader from "@components/Loader/Loader";
 
 const Page = () => {
-  const { allOrders, loader } = useContext(adminContetx);
+
+  const { allOrders, loader,  getAllOrderforAdmin} = useContext(adminContetx);
   const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 3;
@@ -18,6 +19,10 @@ const Page = () => {
   const nextPage = () => setCurrentPage(currentPage + 1);
 
   const prevPage = () => setCurrentPage(currentPage - 1);
+
+  useEffect(()=>{
+    getAllOrderforAdmin(); 
+  },[])
 
   return (
     <div className="mt-[4rem] w-[95%] mx-auto">
