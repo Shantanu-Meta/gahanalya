@@ -31,12 +31,12 @@ const UserOrders = () => {
                           {orders?.map((orderItem)=>{
                             return (
                               <div className='grid mb-2 lg:grid-cols-4 grid-cols-1 md:grid-cols-2' key={orderItem?._id}>
-                                <div>
+                                <div className='inline-block'>
                                 <Image width={200} height={200} src={orderItem.image} alt="img" className='w-[5rem] h-[5rem]'/>
                                 </div>
                                 <div className='h-full'>
                                     <h2>{orderItem?.name}</h2>
-                                    <p className='text-gray-500'>{orderItem?.description}</p>
+                                    <p className='text-gray-500'>{orderItem?.description.slice(0,20)}...</p>
                                 </div>
                                 <div className='flex flex-col gap-2'>
                                   <span>₹ : {orderItem?.price}/-</span>
