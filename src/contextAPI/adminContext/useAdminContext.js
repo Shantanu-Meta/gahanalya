@@ -36,6 +36,7 @@ const UseAdminContext = ({children}) => {
                 cache: 'no-store'
             });
             const response = await getAllOrders.json();
+            console.log(response)
             if (response.success) {
                 const newOrders = await Promise.all(response.data.map(async (item) => {
                     const date = item.date;
