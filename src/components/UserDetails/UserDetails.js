@@ -86,7 +86,7 @@ const Page = () => {
             </button>
             <button
               onClick={nextPage}
-              disabled={currentItems.length <= itemsPerPage}
+              disabled={currentItems.length < itemsPerPage}
               className="px-4 py-2 rounded-md bg-yellow-400 text-black hover:bg-black hover:text-yellow-400 transition-all"
             >
               Next

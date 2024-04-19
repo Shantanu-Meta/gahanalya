@@ -7,7 +7,11 @@ const Page = () => {
   const { getAllOrderforAdmin } = useContext(adminContetx); // Corrected typo in useContext argument
 
     useEffect(()=>{
-        getAllOrderforAdmin(); 
+      async function getData(){
+        await getAllOrderforAdmin(); 
+      }
+
+      getData();
     },[])
 
   return (
