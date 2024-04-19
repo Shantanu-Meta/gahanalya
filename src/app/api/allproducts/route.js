@@ -1,8 +1,8 @@
 import Product from "@lib/models/product";
 import { NextResponse } from "next/server";
 const { default: connectWithMongo } = require("@lib/db");
-import {writeFile} from 'fs/promises'
-import { join } from "path";
+// import {writeFile} from 'fs/promises'
+import { put, del } from '@vercel/blob';
 
 export const GET = async (req) => {
     await connectWithMongo();
@@ -27,14 +27,17 @@ export const POST = async (req) => {    // fully done
     const data = await req.formData(); 
 
     const file = data.get('image'); 
+
     if(!file){
-        return new NextResponse(JSON.stringify({error: "Server error", sucess:false}, {status: 500}))
+        return new NextResponse(JSON.stringify({error: "No file provided", sucess:false}, {status: 500}))
     }
     const byteData = await file.arrayBuffer(); 
     const buffer = Buffer.from(byteData); 
-    const path = `./public/${file.name}`; 
-    await writeFile(path,buffer); 
 
+    const blob = await put(file.name, buffer, {
+        access: 'public',
+    });
+    
     const product = {
         name: '',
         description: '',
@@ -43,7 +46,7 @@ export const POST = async (req) => {    // fully done
         image: '',
         size: '',
     }
-    const newProd = {...product, "name":data.get('name'), "description":data.get('description'),"price":data.get('price'),"tag":data.get('tag'),"size":data.get('size'),"image":file.name}
+    const newProd = {...product, "name":data.get('name'), "description":data.get('description'),"price":data.get('price'),"tag":data.get('tag'),"size":data.get('size'),"image":blob?.url}
      try{
         const newProduct = new Product(newProd);
         await newProduct.save(); 
@@ -70,6 +73,7 @@ export const DELETE = async (req) => {
     console.log(req.productId)
     try{
         const prod = await Product.findByIdAndDelete(req.productId);
+        await del(prod?.image)
         return new NextResponse(JSON.stringify({success: true, prod}, {status: 200}))
     }catch(e){
         return new NextResponse(JSON.stringify({success:false, error: "Internal server error " + e}, {status: 500}))

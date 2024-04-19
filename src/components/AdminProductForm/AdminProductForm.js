@@ -15,14 +15,14 @@ const AdminProductForm = () => {
     description: '',
     price: '',
     tag: '',
-    image: '',
+    image: null,
     size: '',
   });
 
   const handleInputChange = (e) => {
     const { name, value, type } = e.target;
     if (type === 'file') {
-      setFormState({ ...formState, [name]: e.target.files[0] });
+      setFormState({ ...formState, [name]: e.target.files[0]});
     } else {
       setFormState({ ...formState, [name]: value });
     }
@@ -76,11 +76,11 @@ const AdminProductForm = () => {
           description: '',
           price: '',
           tag: '',
-          image: '',
+          image: null,
           size: '',
         });
       } else {
-        toast.error("Some error occured" + productResponse?.error);
+        toast.error("Some error occured " + productResponse?.error);
       }
     } catch (error) {
       toast.error("Failed to add product");
@@ -182,6 +182,7 @@ const AdminProductForm = () => {
               name="image"
               id="image"
               required
+              accept='.jpeg, .png, .jpg'
               placeholder="Type your message"
               className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:shadow-md"
             />

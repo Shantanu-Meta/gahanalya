@@ -32,7 +32,7 @@ const UserOrders = () => {
                             return (
                               <div className='grid mb-2 lg:grid-cols-4 grid-cols-1 md:grid-cols-2' key={orderItem?._id}>
                                 <div>
-                                <Image width={200} height={200} src={`/${orderItem.image}`} alt="img" className='w-[5rem] h-[5rem]'/>
+                                <Image width={200} height={200} src={orderItem.image} alt="img" className='w-[5rem] h-[5rem]'/>
                                 </div>
                                 <div className='h-full'>
                                     <h2>{orderItem?.name}</h2>
