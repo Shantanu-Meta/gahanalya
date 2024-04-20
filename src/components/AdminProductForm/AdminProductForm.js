@@ -28,12 +28,27 @@ const AdminProductForm = () => {
     }
   };
 
+  const toBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader(); 
+      fileReader.readAsDataURL(file); 
+  
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+  
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   
     try {
       let imageToSend = formState.image; // Image to send to backend
-  
       // If there's an image, try to remove background
       if (formState.image) {
         const formData = new FormData();
@@ -60,6 +75,9 @@ const AdminProductForm = () => {
   
       // Prepare form data for the product
       const productFormData = new FormData();
+      
+      imageToSend= await toBase64(imageToSend);
+      console.log(imageToSend)
       productFormData.append('name', formState.name);
       productFormData.append('description', formState.description);
       productFormData.append('price', formState.price);
@@ -199,5 +217,6 @@ const AdminProductForm = () => {
     </div>
   );
 };
+
 
 export default AdminProductForm;
